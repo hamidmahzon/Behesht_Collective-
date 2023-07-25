@@ -1,0 +1,41 @@
+CRITICAL - 2023-03-09 11:55:42 --> Invalid file: "login/home.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/home.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('login/home', [], true)
+ 3 APPPATH\Controllers\Login.php(13): view('login/home')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-09 11:57:10 --> Invalid file: "login/home.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/home.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('login/home', [], true)
+ 3 APPPATH\Controllers\Login.php(13): view('login/home')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-03-09 11:59:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-03-09 11:59:33 --> Invalid file: "default.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('default.php')
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('default', [], true)
+ 3 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('login/home', [], true)
+ 4 APPPATH\Controllers\Login.php(13): view('login/home')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2023-03-09 12:00:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-03-09 12:00:24 --> Cannot access offset of type string on string
+in APPPATH\Views\default.php on line 100.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('default', [], true)
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('login/home', [], true)
+ 5 APPPATH\Controllers\Login.php(13): view('login/home')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
