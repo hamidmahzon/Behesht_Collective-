@@ -31,23 +31,26 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'HomeController::index');
 $routes->get('home', 'HomeController::index');
+$routes->get("login", "LoginController::index");
+$routes->post("logining", "LoginController::logining");
+$routes->post("newpassword", "LoginController::newpassword");
+$routes->match(['get', 'post'],'edit/(:any)/(:any)', 'HomeController::edit/$1/$2');
+
+$routes->post('email', 'EmailController::send');
+
+
 
 $routes->get('nevents', 'NeventsController::index');
 $routes->get("inevents/(:num)", "NeventsController::inevents/$1");
 $routes->get('/contacts', 'ContactsController::index');
 $routes->get('/status', 'StatusController::index');
 
-$routes->match(['get', 'post'],'add/(:any)', 'HomeController::add/$1');
-$routes->match(['get', 'post'],'edit/(:any)/(:any)', 'HomeController::edit/$1/$2');
 $routes->match(['get', 'post'],'del/(:any)/(:any)', 'HomeController::del/$1/$2');
 
 $routes->get('lang/{locale}', 'LanguageController::index');
 $routes->get("color/(:any)", "LanguageController::color/$1");
 
-$routes->get("login", "LoginController::index");
-$routes->post("logining", "LoginController::logining");
 $routes->get("logining", "LoginController::logining");
-$routes->post("newpassword", "LoginController::newpassword");
 $routes->get("reset", "LoginController::reset");
 $routes->get("logout", "LoginController::logout");
 

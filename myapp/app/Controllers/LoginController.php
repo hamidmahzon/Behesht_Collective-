@@ -69,8 +69,8 @@ class LoginController extends BaseController
         }
         else
         {
-            sess()->setFlashdata('fail', true);
-            return view('login/reset');
+            sess()->setFlashdata('flash', "<b class='w3-text-red'>".lang('app.opr_fail')."</b>");
+            return redirect()->to('/');
         }     
     }
     

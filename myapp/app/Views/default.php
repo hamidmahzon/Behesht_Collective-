@@ -1,125 +1,163 @@
 <?php
-    $lang   = session('lang');
-    $color  = session()->get('color');
-    $align  = 'right';
-    $ralign = 'left';
-    $dir    = 'rtl';
-    
-    if(!$lang)
-    {
-        $lang = 'fa';
-    }
-
-    if($lang == 'en')
-    {
-        $ralign = 'right';
-        $align  = 'left';
-        $dir    = 'ltr';
-    }
 
     $bcolor = 'bg-white text-dark';
     $ncolor = 'bg-secondary text-white';
     
-    if(!$color)
+    if(@$color)
     {
         $color  = 'white';
     }
-    if($color == 'black')
+    if(@$color == 'black')
     {
         $bcolor = 'bg-dark text-white';
         $ncolor = 'bg-black text-white';
     }
 
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="Keywords" content="Human rights, Afghan LGBT community, Non-profit organization, Marginalized communities, Activism, Social justice, Equality, Advocacy, Empowerment, Diversity and inclusion, LGBTQ+ rights, Community support, Humanitarian aid, Grassroots organization, Civil society, حقوق بشر، جامعه دگرباشان جنسی افغان، سازمان غیر انتفاعی، جوامع به حاشیه رانده شده، کنشگری، عدالت اجتماعی، برابری، حمایت، توانمندسازی، تنوع و شمول، حقوق LGBTQ+، حمایت جامعه، کمک های بشردوستانه، سازمان های مردمی، جامعه مدنی،">
-        <meta name="Description" content="<?=lang('app.meta_description')?>">
-		
-        <title><?= $this->renderSection('title') ?></title>
-        <link rel="icon" href="<?=base_url('assets/img/wlogo.png')?>" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('./assets/css/w3.css')?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('./assets/css/bootstrap.min.css')?>">
-        <script src="<?=base_url('./assets/js/bootstrap.bundle.min.js')?>"></script>
-    
-        
-       
-        <script src="<?=base_url('./assets/js/jquery-3.6.0.min.js')?>"></script>
-		<script src="<?=base_url('./assets/js/all.min.js')?>"></script>
-        
-        <style>
-            a{
-                color: inherit;
-                text-decoration: none;    
-            }
-            
-            a:hover{
-                color: inherit;
-            }
-            
-            h2:hover
-            {
-                text-decoration: underline;    
-            }
-            
-            @font-face 
-            {
-                src: url('<?=base_url('/assets/font/BBCN.ttf')?>'); 
-            }
-        </style>
+<head>
+<title>Welcome to EIC Construction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<script src="https://kit.fontawesome.com/00312a51b5.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>    
+<link rel="icon" href="<?=base_url('assets/img/logo.svg')?>" type="image/x-icon">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
+body, html 
+{
+    height: 100%;
+    line-height: 1.8;
+}
 
-    </head>
-<body dir="<?=$dir?>" style="font-family: BBCNassim; -webkit-user-select: none!important;" class="<?=$bcolor?>">
-    <nav class="w3-b-topar <?=$ncolor?> w3-hide-small">
-        <?php if(session()->get('login'))
-        {?>
-            <div class="w3-dropdown-hover <?=$ncolor?>">
-            <button type="button" class="w3-bar-item w3-button w3-xlarge w3-hide-small w3-grey fa fa-user w3-circle"></button>
-                <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <b class="w3-bar-item w3-button w3-<?=$align?>-align"><?=lang('app.hi')?><br> <?=session('name')?></b>
-                    <a href="reset" class="w3-bar-item w3-button w3-<?=$align?>-align"><?=lang('app.CPassword')?></a>
-                    <a href="logout" class="w3-bar-item w3-button w3-<?=$align?>-align"><?=lang('app.logout')?></a>
-                </div>
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("<?=base_url('assets/img/home/home.jpg')?>");
+  min-height: 100%;
+}
+    a{
+        text-decoration: none;
+    }
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+    #myNavbar{
+        color: white;
+    }
+#myNavbar.scrolled 
+{
+    background-color: lightgray;
+    color: black;
+}
+</style>
+</head>
+<body>
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-card" id="myNavbar">
+    <?php if(sess()->get('login'))
+    {?>
+        <div class="w3-dropdown-hover <?=$ncolor?>">
+        <button type="button" class="w3-bar-item w3-button w3-xlarge fa fa-user w3-circle"></button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <b class="w3-bar-item w3-button"><?=lang('app.hi')?><br> <?=session('name')?></b>
+                <a href="#" onclick="load(); $.get('<?=base_url('reset')?>', function(data, status){$('#target').html(data).show();});" class="w3-bar-item w3-button"><?=lang('app.CPassword')?></a>
+                <a href="https://x13.x10hosting.com/roundcube" target="_blank" class="w3-bar-item w3-button">Email</a>
+                <a href="https://sso.godaddy.com/" target="_blank" class="w3-bar-item w3-button">Domain Cpanel</a>
+                <a href="https://x13.x10hosting.com:2222/evo/" target="_blank" class="w3-bar-item w3-button">Host Cpanel</a>
+                <a href="https://x13.x10hosting.com/phpMyAdmin/index.php" target="_blank" class="w3-bar-item w3-button">Database Cpanel</a>
+                <a href="logout" class="w3-bar-item w3-button"><?=lang('app.logout')?></a>
             </div>
-        <?php
-        }
-        else
-        {?>
-            <img src="<?=base_url('assets/img/wlogo.png')?>" class="w3-hide-small w3-image w3-circle w3-border" style="width:3%; margin-<?=$align?>:8px; pointer-events: none" />
-        <?php
-        }
-        ?>
-        <a href="<?=base_url()?>" class="w3-bar-item w3-button w3-xlarge w3-hide-small "><b class="fa fa-home w3-large"></b> <?=lang('app.home')?></a>
-        <a href="<?=base_url('nevents')?>" class="w3-bar-item w3-button w3-xlarge w3-hide-small "><b class="fas fa-newspaper w3-large"></b> <?=lang('app.news_events')?></a>
-        <a href="<?=base_url('status')?>" class="w3-bar-item w3-button w3-xlarge w3-hide-small "><b class="fas fa-chart-bar w3-large"></b> <?=lang('app.status')?></a>
-        <a href="<?=base_url('contacts')?>" class="w3-bar-item w3-button w3-xlarge w3-hide-small "><b class="fas fa-newspaper w3-large"></b> <?=lang('app.contact')?></a>
+        </div>
+    <?php
+    }
+    else
+    {?>
+        <b onclick="load(); $.get('<?=base_url('login')?>', function(data, status){$('#target').html(data).show();});" class="w3-bar-item w3-button w3-wide"><img src="<?=base_url('assets/img/logo')?>" class="w3-image" width="50px;" /></b>
+    <?php
+    }
+    ?>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small" id="navbar">
+        <b>
+        <a href="#home" class="w3-bar-item w3-button"><i class="fas fa-home"></i> HOME</a>
+        <a href="#about" class="w3-bar-item w3-button"><i class="fas fa-info-circle"></i> ABOUT</a>
+        <a href="#services" class="w3-bar-item w3-button"><i class="far fa-sun"></i> SERVICES</a>
+        <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="tel:+64211723397" class="w3-bar-item w3-button"><i class="fas fa-phone-alt"></i> CALL NOW</a>
+            </b>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
-        <a href="<?=base_url()?>/lang/<?=$lang;?>" class="w3-hide-small w3-bar-item w3-margin-top w3-margin-<?=$ralign?> w3-text-light-grey w3-large w3-<?=$ralign?>" title="<?=lang('app.lang')?>"><b class="fa fa-language"></b></a>
-        <a href="<?=base_url()?>/color/<?=$color?>" class="w3-hide-small w3-bar-item w3-margin-top w3-margin-<?=$ralign?> w3-text-light-grey w3-large w3-<?=$ralign?>" title="<?=lang('app.'.$color)?>"><b class="fa fa-adjust"></b></a>
-    </nav>
-    
-    <div class="container" style="min-height:800px;">
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-red w3-large w3-padding-16">Close ×</a>
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fas fa-home"></i> HOME</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fas fa-info-circle"></i> ABOUT</a>
+  <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button"><i class="far fa-sun"></i> SERVICES</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+  <a href="tel:+64211723397" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fas fa-phone-alt"></i> CALL NOW</a>
+</nav>
+
 
     <?= $this->renderSection('content') ?>
 
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fab fa-facebook w3-hover-opacity"></i>
+    <i class="fab fa-instagram w3-hover-opacity"></i>
+    <i class="fab fa-snapchat w3-hover-opacity"></i>
+    <i class="fab fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fab fa-twitter w3-hover-opacity"></i>
+    <i class="fab fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Developer by EIC Construction</p>
+</footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
 
-    </div>
 
-    <footer class="w3-footer w3-container w3-margin-top w3-large w3-center w3-padding w3-text-black" style="background: linear-gradient(grey 0%, white 100%)">
-        <b class="w3-xxlarge"></b> <?=lang('app.solo')?> <b class="w3-xxlarge"></b>
-        <br>
-        <a href="https://twitter.com/RoshaniyaLGBT" target="_blank" class="w3-hover-text-teal"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/roshaniyalgbt/?igshid=YmMyMTA2M2Y=" target="_blank" class="w3-hover-text-red"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/RoshaniyaLGBT" target="_blank" class="w3-hover-text-blue"><i class="fab fa-facebook"></i></a>
-        <b class="fa fa-envelope"></b>
-        <br>
-        <span class="w3-small"> <?=lang('app.allRight')?> </span><b class="fa fa-copyright w3-small"></b>
-    </footer>
-    
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() 
+    {
+    mySidebar.style.display = "none";
+}
+</script>
 	    <div id="target" class="w3-modal"></div>
 	    <div id="loadding" class="w3-modal"></div>
     <?php if(session()->has('flash'))
@@ -127,7 +165,7 @@
         <div class="w3-modal flash_target" style="display:block">
         <div class="w3-modal-content">
         <div class="w3-container w3-large">
-            <button type="button" class="w3-display-top<?=$ralign?> w3-padding-small w3-text-red w3-button" onclick="$('.w3-modal').remove();"><i class="fa fa-times"></i></button>
+            <button type="button" class="w3-display-topright w3-padding-small w3-text-red w3-button" onclick="$('.w3-modal').remove();"><i class="fa fa-times"></i></button>
             <?=session()->get('flash')?>
         </div>
         </div>
@@ -146,9 +184,27 @@
     <script>
         function load()
         {
-            $('#loadding').html("<img src='<?=base_url('assets/img/load.gif')?>' class='w3-circle w3-display-topmiddle w3-image w3-margin-top'>").show();;
+            $('#target').html("<img src='<?=base_url('assets/img/load.gif')?>' class='w3-circle w3-display-topmiddle w3-image w3-margin-top'>").show();
+        }        
+        
+        function loadding()
+        {
+            $('#loadding').html("<img src='<?=base_url('assets/img/load.gif')?>' class='w3-circle w3-display-topmiddle w3-image w3-margin-top'>").show();
         }
-    
+        
+        window.addEventListener('scroll', function() 
+        {
+            var navbar = document.getElementById('myNavbar');
+  
+        if (window.scrollY > 0) 
+        {
+            navbar.classList.add('scrolled');
+        } 
+        else 
+        {
+            navbar.classList.remove('scrolled');
+        }
+});
     </script>
 </body>
 </html>

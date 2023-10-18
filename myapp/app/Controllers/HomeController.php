@@ -10,80 +10,30 @@ class HomeController extends BaseController
     }
     public function index()
     {
-		$data['records']	=  db('home')->get()->getResult();
+		$data['records']  =  db('home')->get()->getResult();
+		$data['services'] =  db('services')->get()->getResult();
+		$data['abouts']   =  db('about')->get()->getResult();
         return view('home/home',$data);
     }
 	
-	public function add($sec=false)
-    {
-		if(auth('add'))
-		{
-			if($_POST)
-			{
-				if(isset($_FILES['img']['name']))
-				{
-					$img        = $this->request->getFile('img');
-					$imagName   = $img->getRandomName();
-					$imagName   = str_replace(".", "", $imagName);
-					$ndata      = array('img' => $imagName);
-					$data       = array_merge($_POST, $ndata);
-					$img->move('assets/img/'.$sec,$imagName);
-				}
-				else
-				{
-					$data = $_POST;
-				}
-				db($sec)->insert($data);
-        
-				session()->setFlashdata('flash', "<b class='w3-text-blue'>".lang('app.opr_done')."</b>");
-				return redirect()->back();
-			
-			}
-			else
-			{
-				return view($sec.'/add');
-			}
-		}
-		else
-		{
-			return redirect('home');
-		}
-    }
 	
 	public function edit($sec='', $id='')
 	{
         
-		if(auth('edit'))
+		if(sess()->get('login'))
 		{
 			if($_POST)
 			{
-                array_pop($_POST);
-				if(isset($_FILES['img']['name']))
-				{
-                    $img    = $this->request->getFile('img');
-                    if($this->request->getVar('oimg') != 'default')
-                    {
-                        $imagName   = $this->request->getVar('oimg');
-                        $data = $_POST;
-                    }
-                    else
-                    {
-                        $imagName   = $img->getRandomName();
-                        $imagName   = str_replace(".", "", $imagName);
-                        $aimagName  = array('img' => $imagName);
-                        $data       = array_merge($_POST, $aimagName);
-                    }
-                    
-				    $img->move('assets/img/'.$sec,$imagName,true);
+                $imageFile = $this->request->getFile('img');
+                if ($imageFile && $imageFile->isValid() && $imageFile->getClientMimeType() === 'image/jpeg')
+				{                    
+                    $imagName   = $this->request->getVar('oimg');
+				    $imageFile->move('assets/img/'.$sec,$imagName,true);
+                    array_pop($_POST);
 				}
-				else
-				{
-					$data = $_POST;
-				}
-                db($sec)->set($data)->where('id',$id)->update();
+                db($sec)->set($_POST)->where('id',$id)->update();
 				session()->setFlashdata('flash', "<b class='w3-text-blue'>".lang('app.opr_done')."</b>");
 				return redirect()->back();
-				
 			}
 			else
 			{
